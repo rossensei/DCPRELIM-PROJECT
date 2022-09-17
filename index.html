@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Bill Calculator</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+      #app {
+        background-color: #1f90db;
+        position:absolute;
+        top:0px;
+        right:0px;
+        bottom:0px;
+        left:0px;
+      }
+      .header {
+        padding: 0px;
+        margin:auto;
+        text-align: center;
+        width: 450px;
+        height: 81px;
+        background-color: #2eb053;
+        color: white;
+        
+      }
+      .select {
+        padding: 0px;
+        margin:auto;
+        text-align: center;
+        width: 450px;
+        font-weight: lighter;
+        background-color: #e8e846;
+        /*border: 3px solid #33332f;**/
+        box-shadow: 10px 10px 5px #33332f;
+      }
+      .select label {
+        width: 100px;
+        display: inline-block;
+      }
+      .header h2 {
+        text-shadow: 2px 2px 5px #e8e846;
+      }
+
+      button {
+        font-size: 15px;
+        padding: 5px;
+        border-radius: 8px;
+        margin: 20;
+      }
+
+      #cal-btn {
+        position: fixed;
+        left: 43%;
+        top: 69%;
+      }
+
+      #clear {
+        position: fixed;
+        left: 53%;
+        top: 69%;
+      }
+    </style>
+</head>
+<body>
+      <div id="app">
+        <br>
+          <div class="select">
+            <div class="header">
+              <h2>Electric Bill Calculator</h2>
+              <strong>Check out your power bill!</strong>
+            </div>
+            <form>
+              <br>
+              <label>My Appliance </label>
+              <select>
+                <option value="1">Choose an Appliance</option>
+                <option value="2">Electric Fan</option>
+                <option value="3">Digital TV</option>
+                <option value="4">Desktop Computer</option>
+                <option value="5">Refrigerator</option>
+                <option value="6">Air Conditioner</option>
+                <option value="7">Others..</option>
+                </select> <br> <br>
+              <label>Wattage </label> <input type="number" v-model="wattage"> <br>
+              <label>Power Rate / kWh </label><input type="number" v-model="powerRate"> <br>
+              <label>Hour(s) Used / Day </label><input type="number" v-model="hUsed"> <br>
+              <label>Days Used / Month </label><input type="number" v-model="dUsed"> <br>
+            </form>
+            <br>
+            <strong>POWER USED AND COST PER MONTH:</strong>
+            <h2>{{show()}}</h2>
+            <!--<input v-model="show()" id="res" value="" readonly>-->
+            <br>
+            <br>
+            <br>
+
+            <button @Click="calculate()" type="button" id="cal-btn" >CALCULATE</button>
+            <button @Click="clear()" type="button" id="clear">CLEAR</button>
+          </div>
+          <br>
+          <br>
+        </div>
+        
+      </div>
+      <script src="app.js"></script>
+</body>
+</html>
